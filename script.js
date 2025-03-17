@@ -4,6 +4,8 @@ const equal_button = document.getElementById('equal')
 const textarea = document.getElementById('textarea')
 const plus = document.getElementById('plus')
 
+// TODO: Make it functional
+
 // var contnet = textarea.textContent
 
 // one_button.addEventListener('click', function() {
