@@ -1,6 +1,6 @@
 const textarea = document.getElementById('textarea')
 
-// Numbers and Point
+// Numbers and Decimal
 const one_button = document.getElementById('one-btn')
 const two_button = document.getElementById('two-btn')
 const three_button = document.getElementById('three-btn')
@@ -132,12 +132,13 @@ backspace.addEventListener('click', () => {
 })
 
 equal_button.addEventListener('click', function () {
-    try {
-        console.log
-        content = textarea.textContent
-        textarea.innerHTML = eval(content)
-    } catch (err) {
-        textarea.innerHTML = 'Error'
+    content = textarea.textContent
+    if (content != '') {
+        try {
+            textarea.innerHTML = eval(content)
+        } catch (err) {
+            textarea.innerHTML = 'Error'
+        }
     }
 })
 
