@@ -21,8 +21,7 @@ const multiply = document.getElementById('multiply')
 const divide = document.getElementById('divide')
 const percentage = document.getElementById('percentage')
 const clear = document.getElementById('clear')
-
-// TODO: Fix multiple different operators coming together
+const backspace = document.getElementById('backspace')
 
 // Event Listeners 
 zero_button.addEventListener('click', function () {
@@ -78,35 +77,35 @@ nine_button.addEventListener('click', function () {
 
 point_button.addEventListener('click', function () {
     content = textarea.textContent
-    if (content.slice(-1) != '.') {
+    if (!['.', '+', '-', '/', '*'].includes(content.slice(-1))) {
         textarea.innerHTML = content + '.'
     }
 })
 
 plus.addEventListener('click', function () {
     content = textarea.textContent
-    if (content.slice(-1) != '+') {
+    if (!['.', '+', '-', '/', '*'].includes(content.slice(-1))) {
         textarea.innerHTML = content + '+'
     }
 })
 
 minus.addEventListener('click', function () {
     content = textarea.textContent
-    if (content.slice(-1) != '-') {
+    if (!['.', '+', '-', '/', '*'].includes(content.slice(-1))) {
         textarea.innerHTML = content + '-'
     }
 })
 
 multiply.addEventListener('click', function () {
     content = textarea.textContent
-    if (content.slice(-1) != '*') {
+    if (!['.', '+', '-', '/', '*'].includes(content.slice(-1))) {
         textarea.innerHTML = content + '*'
     }
 })
 
 divide.addEventListener('click', function () {
     content = textarea.textContent
-    if (content.slice(-1) != '/') {
+    if (!['.', '+', '-', '/', '*'].includes(content.slice(-1))) {
         textarea.innerHTML = content + '/'
     }
 })
@@ -114,7 +113,7 @@ divide.addEventListener('click', function () {
 percentage.addEventListener('click', function () {
     content = textarea.textContent
     //FIXME: if (content.slice(-4,-1,-1) != '/100') {
-        textarea.innerHTML = content + '/100'
+    textarea.innerHTML = content + '/100'
     // }
 })
 
@@ -123,13 +122,23 @@ clear.addEventListener('click', function () {
     textarea.innerHTML = ''
 })
 
+backspace.addEventListener('click', () => {
+    content = textarea.textContent
+    if (content == 'Error') {
+        textarea.innerHTML = ''
+    } else {
+        textarea.innerHTML = content.slice(0, -1)
+    }
+})
 
 equal_button.addEventListener('click', function () {
     try {
         console.log
         content = textarea.textContent
         textarea.innerHTML = eval(content)
-    } catch {
-        alert('Something went wrong!')
+    } catch (err) {
+        textarea.innerHTML = 'Error'
     }
 })
+
+
