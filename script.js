@@ -137,7 +137,7 @@ equal_button.addEventListener('click', function () {
         try {
             textarea.innerHTML = eval(content)
         } catch (err) {
-            textarea.innerHTML = 'Error'
+            // textarea.innerHTML = 'Error'
         }
     }
 })
